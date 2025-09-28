@@ -3,53 +3,33 @@
   "width": 800,
   "height": 450,
   "projection": {"type": "equalEarth"},
-  "layer": [
+  "data": {
+    "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/world-110m.json",
+    "format": {"type": "topojson", "feature": "countries"}
+  },
+  "transform": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/world-110m.json",
-        "format": {"type": "topojson", "feature": "countries"}
-      },
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
-    },
-    {
-      "data": {"url": "players.csv"},
-      "transform": [
-        {
-          "aggregate": [{"op": "count", "as": "players"}],
-          "groupby": ["country"]
-        },
-        {
-          "lookup": "country",
-          "from": {
-            "data": {"url": "country_lookup.csv"},
-            "key": "country_original",
-            "fields": ["iso_a3"]
-          }
-        },
-        {
-          "lookup": "iso_a3",
-          "from": {
-            "data": {"url": "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"},
-            "key": "features.id",
-            "fields": ["geometry"]
-          },
-          "as": ["geometry"]
-        }
-      ],
-      "mark": {"type": "geoshape"},
-      "encoding": {
-        "shape": {"field": "geometry", "type": "geojson"},
-        "color": {
-          "field": "players",
-          "type": "quantitative",
-          "scale": {"scheme": "blues"},
-          "legend": {"title": "Players"}
-        },
-        "tooltip": [
-          {"field": "iso_a3", "type": "nominal", "title": "ISO A3"},
-          {"field": "players", "type": "quantitative", "title": "Players"}
-        ]
+      "lookup": "id",
+      "from": {
+        "data": {"url": "real_player_counts.csv"},
+        "key": "id",
+        "fields": ["players"]
       }
     }
-  ]
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "players",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "legend": {"title": "Number of Players"}
+    },
+    "stroke": {"value": "white"},
+    "strokeWidth": {"value": 0.5},
+    "tooltip": [
+      {"field": "id", "type": "nominal", "title": "Country ID"},
+      {"field": "players", "type": "quantitative", "title": "Number of Players"}
+    ]
+  }
 }
