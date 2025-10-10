@@ -48,10 +48,22 @@
         {
           "lookup": "id",
           "from": {
-            "data": {"url": "real_player_counts.csv"},
+            "data": {"url": "real_player_counts.csv?v=2"},
             "key": "id",
             "fields": ["players", "country_name"]
           }
+        },
+        {
+          "lookup": "id",
+          "from": {
+            "data": {"url": "population_data.csv?v=2"},
+            "key": "id",
+            "fields": ["population"]
+          }
+        },
+        {
+          "calculate": "datum.players / datum.population",
+          "as": "players_per_million"
         }
       ],
       "mark": {
@@ -60,20 +72,21 @@
       },
       "encoding": {
         "color": {
-          "field": "players",
+          "field": "players_per_million",
           "type": "quantitative",
           "scale": {
             "scheme": "blues",
-            "type": "log",
-            "domain": [1, 15000]
+            "type": "linear",
+            "domain": [0, 200]
           },
-          "legend": {"title": "Number of Players (Log Scale)"}
+          "legend": {"title": "Players per Million Population"}
         },
         "stroke": {"value": "white"},
         "strokeWidth": {"value": 0.5},
         "tooltip": [
           {"field": "country_name", "type": "nominal", "title": "Country"},
-          {"field": "players", "type": "quantitative", "title": "Number of Players"}
+          {"field": "players", "type": "quantitative", "title": "Total Players"},
+          {"field": "players_per_million", "type": "quantitative", "title": "Players per Million", "format": ".1f"}
         ]
       }
     }
