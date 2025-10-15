@@ -5,6 +5,7 @@ year,month,city,tournament,mean_high_c,mean_low_c,mean_temp_c
 2019,January,Melbourne,Australian Open,30.4,15.5,22.95
 2020,January,Melbourne,Australian Open,27.8,13.7,20.75
 2021,January,Melbourne,Australian Open,26.1,13.7,19.9
-2022,January,Melbourne,Australian Open,30,16.4,23.2
-2023,January,Melbourne,Australian Open,26.9,15,20.95
+2022,January,Melbourne,Australian Open,30.0,16.4,23.2
+2023,January,Melbourne,Australian Open,26.9,15.0,20.95
 2024,January,Melbourne,Australian Open,25.9,14.8,20.35
+2025,January,Melbourne,Australian Open,28.0,14.7,21.35

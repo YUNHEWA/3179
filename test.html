@@ -2,44 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Tennis Players Analysis Dashboard</title>
+  <title>Tennis Grand Slam Analysis Dashboard - Enhanced</title>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <script src="vega-chart.js"></script>
   <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 1600px;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.6;
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #f8fff8 0%, #f0fff0 50%, #fff8f0 100%);
+    min-height: 100vh;
   }
     .container {
       background-color: white;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       margin-bottom: 30px;
       overflow: hidden;
+      border: 2px solid #9ACD32;
     }
     h1 {
       color: #2c3e50;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+      font-weight: 300;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #34495e;
-      border-bottom: 2px solid #3498db;
+      color: #9ACD32;
+      border-bottom: 3px solid #FF8C00;
       padding-bottom: 10px;
+      font-size: 1.8em;
     }
     .description {
-      background-color: #f8f9fa;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      border-left: 4px solid #007bff;
+      background: linear-gradient(135deg, #f0fff0 0%, #e6ffe6 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border-left: 5px solid #9ACD32;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .dataset-info {
       background-color: #e9ecef;
@@ -49,7 +55,7 @@
     }
     .highlight {
       font-weight: bold;
-      color: #007bff;
+      color: #FF8C00;
     }
     .chart-container {
       position: relative;
@@ -58,9 +64,10 @@
     }
   #vis {
     width: 100%;
-    height: 700px;
+    height: 800px;
     overflow: hidden;
     border-radius: 8px;
+    background-color: white;
   }
     #vis svg {
       max-width: 100%;
@@ -68,14 +75,15 @@
     }
     #vegaChart {
       width: 100%;
-      height: 500px;
+      height: 400px;
       background-color: white;
     }
     .slider-container {
       margin: 20px 0;
       padding: 20px;
-      background-color: #f8f9fa;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #f0fff0 0%, #e6ffe6 100%);
+      border-radius: 10px;
+      border: 2px solid #9ACD32;
     }
     .slider {
       width: 100%;
@@ -91,16 +99,25 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #3498db;
+      background: #FF8C00;
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .slider::-moz-range-thumb {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #3498db;
+      background: #FF8C00;
       cursor: pointer;
       border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .custom-legend {
+      margin-top: 20px;
+      padding: 15px;
+      background: linear-gradient(135deg, #f0fff0 0%, #e6ffe6 100%);
+      border-radius: 10px;
+      border: 2px solid #9ACD32;
     }
     .slider-labels {
       display: flex;
@@ -113,9 +130,10 @@
       display: flex;
       justify-content: space-around;
       margin: 20px 0;
-      padding: 15px;
-      background-color: #e8f4fd;
-      border-radius: 8px;
+      padding: 20px;
+      background: linear-gradient(135deg, #9ACD32 0%, #FF8C00 100%);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(154, 205, 50, 0.3);
     }
     .stat-item {
       text-align: center;
@@ -123,25 +141,45 @@
     .stat-number {
       font-size: 24px;
       font-weight: bold;
-      color: #3498db;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
     .stat-label {
       font-size: 14px;
-      color: #666;
+      color: white;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Tennis Players Analysis Dashboard</h1>
+    <h1>🎾 Tennis Grand Slam Analysis Dashboard</h1>
+    <p style="text-align: center; color: #7f8c8d; font-style: italic; margin-bottom: 30px;">Enhanced visualization with Grand Slam tournament locations and historical analysis</p>
     
-    <h2>Global Distribution of Tennis Players by Country</h2>
+    <h2>🌍 Global Distribution of Tennis Players & Grand Slam Locations</h2>
+    <div class="description">
+      <p><strong>The Global Tennis Story:</strong> This map tells the story of tennis around the world. Some countries are tennis powerhouses, producing hundreds of professional players, while others have barely any. The darker areas show where tennis has taken root and flourished - these are the nations that dominate the sport.</p>
+      
+      <p><strong>Surprising Discoveries:</strong> You might expect tennis to be most popular in wealthy countries, but the data reveals some surprises. Some smaller nations punch well above their weight in tennis, while some large countries have surprisingly few players. This map shows us which nations have truly embraced tennis culture.</p>
+      
+      <p><strong>The Grand Slam Connection:</strong> The four tournament locations tell another story - tennis's global reach. From the <span class="highlight">Australian Open</span> in Melbourne to <span class="highlight">Wimbledon</span> in London, <span class="highlight">Roland Garros</span> in Paris, and the <span class="highlight">US Open</span> in New York, these tournaments span four continents. This isn't just coincidence - it reflects tennis's journey from a British garden game to a truly global sport.</p>
+      
+      <p><strong>Australia's Tennis Legacy:</strong> Australia stands out on this map, not just as a host nation, but as a country that has produced some of tennis's greatest champions. From Rod Laver to Margaret Court, Australia has been a tennis superpower, and the <span class="highlight">Australian Open</span> continues this legacy every January.</p>
+    </div>
     <div id="vis"></div>
   </div>
 
   <div class="container">
-    <h2>Tennis Players by Birth Year</h2>
-    <p>Use the slider below to filter players by birth year range. The chart shows the number of tennis players born in each year.</p>
+    <h2>📈 Tennis Player Birth Years: Evolution of Tennis Popularity</h2>
+    <div class="description">
+      <p><strong>The Tennis Revolution:</strong> This chart reveals one of sport's greatest success stories. In the 1800s, tennis was a niche pastime for the wealthy. By the 2000s, it had become a global phenomenon with thousands of new players every year. The dramatic growth tells the story of how tennis transformed from a garden party game to a professional sport watched by millions.</p>
+      
+      <p><strong>Three Defining Periods:</strong> The data reveals three distinct chapters in tennis history. The <span class="highlight">Classic Era</span> shows tennis in its infancy - a handful of players in the 1800s. The <span class="highlight">Transition Era</span> captures tennis's gradual spread as courts appeared in more places. The <span class="highlight">Modern Era</span> shows the explosion - when tennis became a mass participation sport with professional opportunities for thousands.</p>
+      
+      <p><strong>The 1968 Revolution:</strong> The orange line marks the most important moment in tennis history - the <span class="highlight">Open Era</span>. Before 1968, tennis was split between amateurs and professionals who couldn't compete together. This artificial barrier kept the sport small and limited. When it was removed, tennis exploded. The bars after 1968 tell the story of a sport finally free to reach its potential.</p>
+      
+      <p><strong>What the Numbers Reveal:</strong> The most striking finding is the scale of growth. In the 1800s, you could count tennis players on your fingers. By the 1990s, thousands of players were being born each year. This isn't just about more people - it's about tennis becoming accessible, professional, and truly global. Use the slider to explore this incredible transformation year by year.</p>
+    </div>
     
     <div class="slider-container">
       <label for="vegaYearSlider">Birth Year Range: <span id="vegaYearRange">1834 - 2005</span></label>
@@ -170,13 +208,71 @@
     <div class="chart-container">
       <div id="vegaChart"></div>
     </div>
+    
+    <div class="custom-legend">
+      <h4 style="text-align: center; color: #9ACD32; margin-bottom: 10px;">Tennis Era</h4>
+      <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <div style="width: 12px; height: 12px; background-color: #9ACD32; border-radius: 50%;"></div>
+          <span style="font-size: 12px;">Classic Era</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <div style="width: 12px; height: 12px; background-color: #32CD32; border-radius: 50%;"></div>
+          <span style="font-size: 12px;">Transition Era</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <div style="width: 12px; height: 12px; background-color: #FF8C00; border-radius: 50%;"></div>
+          <span style="font-size: 12px;">Modern Era</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript">
-    // Load the map visualization
-    vegaEmbed('#vis', 'map-simple.json');
+    // Load the enhanced map visualization with legend
+    vegaEmbed('#vis', 'map-with-legend.json', {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Enhanced map with legend loaded successfully');
+    }).catch(console.error);
     
-    // Chart initialization is now handled by chart.js
+    // Load the enhanced birth year chart
+    vegaEmbed('#vegaChart', 'birth-year-real-data.json', {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Enhanced birth year chart loaded successfully');
+      
+      // Add slider functionality
+      const slider = document.getElementById('vegaYearSlider');
+      const rangeDisplay = document.getElementById('vegaYearRange');
+      const filteredPlayersDisplay = document.getElementById('vegaFilteredPlayers');
+      
+      // Store the original data
+      let originalData = null;
+      
+      function updateChart() {
+        const maxYear = parseInt(slider.value);
+        rangeDisplay.textContent = `1834 - ${maxYear}`;
+        
+        // Get original data if not stored yet
+        if (!originalData) {
+          originalData = result.view.data('source_0');
+        }
+        
+        // Filter the original data
+        const filteredData = originalData.filter(d => d.year <= maxYear);
+        const totalFiltered = filteredData.reduce((sum, d) => sum + d.count, 0);
+        filteredPlayersDisplay.textContent = totalFiltered.toLocaleString();
+        
+        // Update the chart with filtered data
+        result.view.change('source_0', vega.changeset().remove(vega.truthy).insert(filteredData)).run();
+      }
+      
+      slider.addEventListener('input', updateChart);
+      updateChart(); // Initial update
+    }).catch(console.error);
   </script>
 </body>
 </html>

@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Global Tennis Player Distribution & Grand Slam Locations",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#2c3e50"
+  },
+  "width": 1400,
+  "height": 800,
+  "projection": {
+    "type": "naturalEarth1",
+    "scale": 300,
+    "translate": [650, 400]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8f9fa",
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/world-110m.json",
+        "format": {"type": "topojson", "feature": "countries"}
+      },
+      "transform": [
+        {
+          "lookup": "id",
+          "from": {
+            "data": {"url": "real_player_counts.csv"},
+            "key": "id",
+            "fields": ["players", "country_name"]
+          }
+        },
+        {
+          "lookup": "id",
+          "from": {
+            "data": {"url": "population_data.csv"},
+            "key": "id",
+            "fields": ["population"]
+          }
+        },
+        {
+          "calculate": "datum.players / datum.population",
+          "as": "players_per_million"
+        },
+        {
+          "calculate": "datum.country_name === 'Australia' ? 'Australia' : 'Other'",
+          "as": "is_australia"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "cursor": "pointer",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "players_per_million",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 200],
+            "range": ["#9ACD32", "#FF8C00"]
+          },
+          "legend": {
+            "title": "Players per Million",
+            "orient": "right",
+            "titleFontSize": 14,
+            "labelFontSize": 12
+          }
+        },
+        "stroke": {
+          "field": "is_australia",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australia", "Other"],
+            "range": ["#e74c3c", "white"]
+          },
+          "legend": null
+        },
+        "strokeWidth": {
+          "field": "is_australia",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australia", "Other"],
+            "range": [3, 1]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "country_name", "type": "nominal", "title": "Country"},
+          {"field": "players", "type": "quantitative", "title": "Total Players", "format": ",.0f"},
+          {"field": "players_per_million", "type": "quantitative", "title": "Players per Million", "format": ".1f"},
+          {"field": "population", "type": "quantitative", "title": "Population (Million)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Australian Open",
+            "city": "Melbourne",
+            "country": "Australia",
+            "latitude": -37.8136,
+            "longitude": 144.9631,
+            "color": "#e74c3c",
+            "size": 120
+          },
+          {
+            "name": "Wimbledon Open",
+            "city": "London",
+            "country": "United Kingdom",
+            "latitude": 51.4344,
+            "longitude": -0.2141,
+            "color": "#8e44ad",
+            "size": 100
+          },
+          {
+            "name": "French Open",
+            "city": "Paris",
+            "country": "France",
+            "latitude": 48.8467,
+            "longitude": 2.2534,
+            "color": "#3498db",
+            "size": 100
+          },
+          {
+            "name": "US Open",
+            "city": "New York",
+            "country": "United States",
+            "latitude": 40.7505,
+            "longitude": -73.8456,
+            "color": "#f39c12",
+            "size": 100
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "cursor": "pointer",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {"field": "size", "type": "quantitative", "legend": null},
+        "color": {
+          "field": "name",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon Open", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          },
+          "legend": {
+            "title": "Grand Slam Tournaments",
+            "orient": "right",
+            "titleFontSize": 14,
+            "labelFontSize": 12,
+            "symbolType": "circle",
+            "symbolSize": 100
+          }
+        },
+        "tooltip": [
+          {"field": "name", "type": "nominal", "title": "Tournament"},
+          {"field": "city", "type": "nominal", "title": "City"},
+          {"field": "country", "type": "nominal", "title": "Country"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"grid": false, "domain": false, "ticks": false, "labels": false}
+  }
+}
