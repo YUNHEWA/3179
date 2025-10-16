@@ -1,0 +1,214 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Grand Slam Tournament Temperatures: The Climate Challenge (2016-2024)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Temperature conditions at all four Grand Slam tournaments, showing the diverse climate challenges players face.",
+  "data": {
+    "url": "all_grand_slam_temperatures.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.mean_temp_c >= 25 ? 'Hot' : datum.mean_temp_c >= 20 ? 'Warm' : 'Cool'",
+      "as": "temperature_category"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year",
+          "sort": null,
+          "axis": {
+            "titleFontWeight": "bold",
+            "titleColor": "#9ACD32",
+            "labelAngle": 0,
+            "labelAlign": "center",
+            "labelPadding": 8,
+            "orient": "bottom",
+            "side": "bottom",
+            "values": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+          }
+        },
+        "y": {
+          "field": "mean_temp_c",
+          "type": "quantitative",
+          "title": "Average Temperature (°C)",
+          "scale": {
+            "domain": [15, 30]
+          },
+          "axis": {
+            "titleFontWeight": "bold",
+            "titleColor": "#9ACD32",
+            "orient": "left",
+            "side": "left"
+          }
+        },
+        "color": {
+          "field": "tournament",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          },
+          "legend": {
+            "title": "Grand Slam Tournament",
+            "orient": "bottom",
+            "titleFontSize": 14,
+            "titleColor": "#9ACD32",
+            "labelFontSize": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "tournament",
+            "type": "nominal",
+            "title": "Tournament"
+          },
+          {
+            "field": "city",
+            "type": "nominal",
+            "title": "City"
+          },
+          {
+            "field": "mean_temp_c",
+            "type": "quantitative",
+            "title": "Average Temperature",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_high_c",
+            "type": "quantitative",
+            "title": "Average High",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_low_c",
+            "type": "quantitative",
+            "title": "Average Low",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "mean_temp_c",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "tournament",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "tournament",
+            "type": "nominal",
+            "title": "Tournament"
+          },
+          {
+            "field": "mean_temp_c",
+            "type": "quantitative",
+            "title": "Average Temperature",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#FF8C00",
+        "strokeWidth": 2,
+        "strokeDash": [5, 5]
+      },
+      "encoding": {
+        "y": {"datum": 25}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "Hot Weather Threshold",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#FF8C00",
+        "dx": 10,
+        "dy": -10
+      },
+      "encoding": {
+        "x": {"datum": 2016},
+        "y": {"datum": 25}
+      }
+    }
+  ],
+  "width": "container",
+  "height": 600,
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false,
+      "domain": true,
+      "ticks": true,
+      "labelAngle": 0,
+      "labelFontSize": 14,
+      "titleFontSize": 18
+    },
+    "axisX": {
+      "labelAngle": 0,
+      "orient": "bottom",
+      "labelFontSize": 14,
+      "titleFontSize": 18
+    },
+    "axisY": {
+      "grid": true,
+      "gridColor": "#f0f0f0",
+      "gridOpacity": 0.5,
+      "labelFontSize": 14,
+      "titleFontSize": 18
+    }
+  }
+}
