@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Temperature Ranges: High vs Low During Tournament Periods",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Temperature ranges showing the daily high and low temperatures during each Grand Slam tournament period.",
+  "data": {
+    "url": "all_grand_slam_temperatures.csv"
+  },
+  "width": 700,
+  "height": 600,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year",
+          "sort": null,
+          "axis": {
+            "titleFontWeight": "bold",
+            "titleColor": "#9ACD32",
+            "labelAngle": 0,
+            "labelAlign": "center",
+            "labelPadding": 8,
+            "orient": "bottom",
+            "side": "bottom",
+            "titleFontSize": 16,
+            "labelFontSize": 12,
+            "values": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+          }
+        },
+        "y": {
+          "field": "mean_low_c",
+          "type": "quantitative",
+          "title": "Temperature (°C)",
+          "scale": {
+            "domain": [10, 35]
+          },
+          "axis": {
+            "titleFontWeight": "bold",
+            "titleColor": "#9ACD32",
+            "orient": "left",
+            "side": "left",
+            "titleFontSize": 16,
+            "labelFontSize": 13
+          }
+        },
+        "y2": {
+          "field": "mean_high_c"
+        },
+        "color": {
+          "field": "tournament",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          },
+          "legend": {
+            "title": "Grand Slam Tournament",
+            "orient": "bottom",
+            "titleFontSize": 14,
+            "titleColor": "#9ACD32",
+            "labelFontSize": 12,
+            "direction": "horizontal"
+          }
+        },
+        "xOffset": {
+          "field": "tournament"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "tournament",
+            "type": "nominal",
+            "title": "Tournament"
+          },
+          {
+            "field": "mean_high_c",
+            "type": "quantitative",
+            "title": "Average High",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_low_c",
+            "type": "quantitative",
+            "title": "Average Low",
+            "format": ".1f"
+          },
+          {
+            "field": "mean_temp_c",
+            "type": "quantitative",
+            "title": "Average Temperature",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "mean_high_c",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "tournament",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          }
+        },
+        "xOffset": {
+          "field": "tournament"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "mean_low_c",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "tournament",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Australian Open", "Wimbledon", "French Open", "US Open"],
+            "range": ["#e74c3c", "#8e44ad", "#3498db", "#f39c12"]
+          }
+        },
+        "xOffset": {
+          "field": "tournament"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#FF8C00",
+        "strokeWidth": 2,
+        "strokeDash": [5, 5]
+      },
+      "encoding": {
+        "y": {"datum": 25}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "Heat Threshold (25°C)",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#FF8C00",
+        "dx": 10,
+        "dy": -10
+      },
+      "encoding": {
+        "x": {"datum": 2016},
+        "y": {"datum": 25}
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": true,
+      "gridColor": "#f0f0f0",
+      "gridOpacity": 0.5,
+      "domain": true,
+      "ticks": true
+    }
+  }
+}
+

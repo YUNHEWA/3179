@@ -261,27 +261,6 @@
   </div>
 
   <div class="container">
-    <h2>🌡️ Grand Slam Tournament Temperatures: The Climate Challenge (2016-2024)</h2>
-    <div class="chart-layout">
-      <div class="description">
-        <p><strong>The Four Climate Stories:</strong> This chart reveals the dramatically different weather conditions during each Grand Slam tournament period. From Melbourne's scorching heat during the Australian Open to London's unpredictable weather during Wimbledon, each tournament presents unique climate challenges that test players in completely different ways.</p>
-        
-        <p><strong>Temperature Extremes:</strong> The data shows the Australian Open (red line) consistently experiences the hottest conditions during its tournament period, often exceeding 25°C. Wimbledon (purple) tends to be the coolest during its tournament period, while the French Open (blue) and US Open (orange) fall somewhere in between. This temperature variation explains why some players excel at certain tournaments while struggling at others.</p>
-        
-        <p><strong>The Heat Threshold:</strong> The orange dashed line marks 25°C - the point where conditions become extremely challenging for players. Notice how the Australian Open frequently crosses this threshold during its tournament period, while Wimbledon rarely does. This explains why heat tolerance and conditioning are crucial for Australian Open success.</p>
-        
-        <p><strong>Year-to-Year Variations:</strong> Each tournament shows significant temperature fluctuations from year to year during their respective tournament periods. A cool year at the Australian Open might be easier than a hot year at the US Open. This unpredictability adds another layer of strategy - players must adapt their preparation and tactics based on the specific weather conditions they'll face during each Grand Slam.</p>
-      </div>
-      
-      <div class="chart-wrapper">
-        <div class="chart-container-temp">
-          <div id="temperatureChart"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
     <h2>🎾 Left-Handed vs Right-Handed Players: The Lefty Advantage?</h2>
     <div class="chart-layout">
       <div class="description">
@@ -324,6 +303,34 @@
   </div>
 
   <div class="container">
+    <h2>🌡️ Grand Slam Tournament Temperatures: The Climate Challenge (2016-2024)</h2>
+    <div class="description">
+      <p><strong>The Four Climate Stories:</strong> These charts reveal the dramatically different weather conditions during each Grand Slam tournament period. From Melbourne's scorching heat during the Australian Open to London's unpredictable weather during Wimbledon, each tournament presents unique climate challenges that test players in completely different ways.</p>
+      
+      <p><strong>Temperature Extremes:</strong> The left chart shows average temperatures over time, while the right chart displays the temperature ranges (high to low). The Australian Open (red) consistently experiences the hottest conditions, with highs often exceeding 30°C and the widest temperature swings. Wimbledon (purple) tends to be the coolest and most stable. The US Open (orange) shows consistently high temperatures with smaller daily variations.</p>
+      
+      <p><strong>The Heat Threshold:</strong> The orange dashed line marks 25°C - the point where conditions become extremely challenging for players. Notice how the Australian Open frequently crosses this threshold, while Wimbledon rarely does. The temperature ranges show that players in Melbourne must prepare for both hot days and cool mornings/evenings, adding to the physical challenge.</p>
+      
+      <p><strong>Year-to-Year Variations:</strong> Both charts show significant temperature fluctuations from year to year. The range chart reveals that some tournaments (like the Australian Open) have larger daily temperature swings, requiring players to adapt their clothing and strategy throughout the day. This unpredictability means players must be prepared for diverse conditions at each Grand Slam.</p>
+    </div>
+    
+    <div style="display: flex; gap: 20px; margin-top: 20px;">
+      <div style="flex: 1;">
+        <h3 style="color: #9ACD32; text-align: center; font-size: 16px;">Average Temperatures</h3>
+        <div class="chart-container-temp">
+          <div id="temperatureChart"></div>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <h3 style="color: #9ACD32; text-align: center; font-size: 16px;">Temperature Ranges (High-Low)</h3>
+        <div class="chart-container-temp">
+          <div id="temperatureRangeChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
     <h2>🏆 Grand Slam Dominance: The Big Three Era (2005-2025)</h2>
     <div style="background: linear-gradient(135deg, #fff8f0 0%, #f0fff0 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #FF8C00;">
       <p style="margin: 0; font-size: 14px; color: #2c3e50;"><strong>💡 Interactive Feature:</strong> Click on any tournament name in the legend (Australian Open, French Open, Wimbledon, US Open) to filter both charts below. Click the same tournament again to reset. This lets you explore which players dominated specific tournaments!</p>
@@ -351,13 +358,13 @@
     <h2>🎯 Tournament Specialization: Masters of Their Domain</h2>
     <div class="chart-layout">
       <div class="description">
-        <p><strong>The King of Clay:</strong> <span class="highlight">Rafael Nadal's 14 French Open titles</span> represent the most dominant performance at a single tournament in tennis history. He won 14 out of 21 French Opens (66.7%) from 2005-2025. On clay courts in Paris, Nadal is virtually unbeatable - his game, physicality, and mental strength combine perfectly with the slow surface. This is specialization taken to an extreme rarely seen in any sport.</p>
+        <p><strong>The King of Clay:</strong> <span class="highlight">Rafael Nadal's 14 French Open titles</span> (shown in blue) represent the most dominant performance at a single tournament in tennis history. He won 14 out of 21 French Opens (66.7%) from 2005-2025. On clay courts in Paris, Nadal is virtually unbeatable - his game, physicality, and mental strength combine perfectly with the slow surface. This is specialization taken to an extreme rarely seen in any sport.</p>
         
-        <p><strong>Djokovic's Melbourne Fortress:</strong> <span class="highlight">Novak Djokovic's 10 Australian Open titles</span> show his mastery of hard courts and hot conditions. Melbourne's fast courts and summer heat suit his defensive style and incredible fitness. His dominance down under has made the Australian Open his signature tournament, much like Nadal owns the French Open.</p>
+        <p><strong>Djokovic's Melbourne Fortress:</strong> <span class="highlight">Novak Djokovic's 10 Australian Open titles</span> (shown in red) show his mastery of hard courts and hot conditions. Melbourne's fast courts and summer heat suit his defensive style and incredible fitness. His dominance down under has made the Australian Open his signature tournament, much like Nadal owns the French Open.</p>
         
-        <p><strong>Federer's Grass Court Elegance:</strong> <span class="highlight">Roger Federer's 6 Wimbledon titles</span> (in this period) showcase his graceful, attacking style perfectly suited to grass. His serve-and-volley game and elegant movement made him nearly unstoppable on Wimbledon's lawns. The All England Club became his second home.</p>
+        <p><strong>Federer's Grass Court Elegance:</strong> <span class="highlight">Roger Federer's 6 Wimbledon titles</span> (shown in purple) showcase his graceful, attacking style perfectly suited to grass. His serve-and-volley game and elegant movement made him nearly unstoppable on Wimbledon's lawns. The All England Club became his second home.</p>
         
-        <p><strong>Surface Matters:</strong> This chart reveals a fundamental truth about tennis - surface specialization is real and significant. While the Big Three could win on any surface, each had their fortress. For aspiring players, this shows the importance of developing a game style that matches your strengths and finding surfaces where you excel. The data proves that specialization, combined with all-around excellence, is the path to greatness.</p>
+        <p><strong>Reading the Streamgraph:</strong> This flowing chart shows each player's tournament distribution. The width of each colored band represents the number of titles won at that tournament. Notice how Nadal's French Open band (blue) dominates his profile, while Djokovic has a more balanced distribution with a strong Australian Open presence (red). The streamgraph's flowing design makes it easy to see each player's specialization pattern at a glance.</p>
       </div>
       
       <div class="chart-wrapper">
@@ -422,22 +429,32 @@
       console.log('Grand Slam temperatures chart loaded successfully');
     }).catch(console.error);
     
-    // Load the handedness analysis chart
+    // Load the temperature ranges chart
+    vegaEmbed('#temperatureRangeChart', 'temperature-ranges.json?v=' + Date.now(), {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Temperature ranges chart loaded successfully');
+    }).catch(function(error) {
+      console.error('Error loading temperature ranges chart:', error);
+    });
+    
+    // Load the handedness bar chart
     vegaEmbed('#handednessChart', 'handedness-analysis.json?v=' + Date.now(), {
       actions: false,
       renderer: 'svg'
     }).then(function(result) {
-      console.log('Handedness analysis chart loaded successfully');
+      console.log('Handedness bar chart loaded successfully');
     }).catch(function(error) {
       console.error('Error loading handedness chart:', error);
     });
     
-    // Load the gender distribution chart
-    vegaEmbed('#genderChart', 'gender-distribution.json?v=' + Date.now(), {
+    // Load the enhanced gender distribution chart
+    vegaEmbed('#genderChart', 'gender-distribution-enhanced.json?v=' + Date.now(), {
       actions: false,
       renderer: 'svg'
     }).then(function(result) {
-      console.log('Gender distribution chart loaded successfully');
+      console.log('Enhanced gender distribution chart loaded successfully');
     }).catch(function(error) {
       console.error('Error loading gender chart:', error);
     });
@@ -452,12 +469,12 @@
       console.error('Error loading dominance chart:', error);
     });
     
-    // Load the tournament specialization chart
-    vegaEmbed('#specializationChart', 'tournament-specialization.json?v=' + Date.now(), {
+    // Load the tournament specialization streamgraph
+    vegaEmbed('#specializationChart', 'tournament-specialization-stream.json?v=' + Date.now(), {
       actions: false,
       renderer: 'svg'
     }).then(function(result) {
-      console.log('Tournament specialization chart loaded successfully');
+      console.log('Tournament specialization streamgraph loaded successfully');
     }).catch(function(error) {
       console.error('Error loading specialization chart:', error);
     });
