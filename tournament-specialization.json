@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Tournament Specialization: Masters of Their Domain",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Grouped bar chart showing which Grand Slam tournaments each champion dominated, revealing remarkable specialization patterns.",
+  "data": {
+    "url": "tournament_specialization.csv"
+  },
+  "width": 700,
+  "height": 400,
+  "params": [
+    {
+      "name": "tournament_select",
+      "select": {
+        "type": "point",
+        "fields": ["tournament"]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true,
+    "cursor": "pointer"
+  },
+  "encoding": {
+    "x": {
+      "field": "player",
+      "type": "nominal",
+      "title": "Player",
+      "axis": {
+        "titleFontWeight": "bold",
+        "titleColor": "#9ACD32",
+        "labelAngle": -45,
+        "titleFontSize": 16,
+        "labelFontSize": 11,
+        "labelAlign": "right"
+      }
+    },
+    "y": {
+      "field": "titles",
+      "type": "quantitative",
+      "title": "Number of Titles",
+      "axis": {
+        "titleFontWeight": "bold",
+        "titleColor": "#9ACD32",
+        "titleFontSize": 16,
+        "labelFontSize": 13
+      }
+    },
+    "color": {
+      "field": "tournament",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Australian Open", "French Open", "Wimbledon", "US Open"],
+        "range": ["#e74c3c", "#3498db", "#8e44ad", "#f39c12"]
+      },
+      "legend": {
+        "title": "Tournament",
+        "orient": "bottom",
+        "titleFontSize": 14,
+        "titleColor": "#9ACD32",
+        "labelFontSize": 12,
+        "direction": "horizontal"
+      }
+    },
+    "xOffset": {
+      "field": "tournament"
+    },
+    "opacity": {
+      "condition": {
+        "param": "tournament_select",
+        "value": 1
+      },
+      "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "player",
+        "type": "nominal",
+        "title": "Player"
+      },
+      {
+        "field": "tournament",
+        "type": "nominal",
+        "title": "Tournament"
+      },
+      {
+        "field": "titles",
+        "type": "quantitative",
+        "title": "Titles Won"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": true,
+      "gridColor": "#f0f0f0",
+      "gridOpacity": 0.5,
+      "domain": true,
+      "ticks": true
+    }
+  }
+}
+

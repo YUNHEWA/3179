@@ -47,6 +47,20 @@
       border-left: 5px solid #9ACD32;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+    .chart-layout {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .chart-layout .description {
+      flex: 0 0 350px;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+    .chart-layout .chart-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
     .dataset-info {
       background-color: #e9ecef;
       padding: 15px;
@@ -126,9 +140,8 @@
     .custom-legend {
       margin-top: 20px;
       padding: 15px;
-      background: linear-gradient(135deg, #f0fff0 0%, #e6ffe6 100%);
+      background: transparent;
       border-radius: 10px;
-      border: 2px solid #9ACD32;
     }
     .slider-labels {
       display: flex;
@@ -168,72 +181,80 @@
     <p style="text-align: center; color: #7f8c8d; font-style: italic; margin-bottom: 30px;">Enhanced visualization with Grand Slam tournament locations and historical analysis</p>
     
     <h2>🌍 Global Distribution of Tennis Players & Grand Slam Locations</h2>
-    <div class="description">
-      <p><strong>The Global Tennis Story:</strong> This map tells the story of tennis around the world. Some countries are tennis powerhouses, producing hundreds of professional players, while others have barely any. The darker areas show where tennis has taken root and flourished - these are the nations that dominate the sport.</p>
-      
-      <p><strong>Surprising Discoveries:</strong> You might expect tennis to be most popular in wealthy countries, but the data reveals some surprises. Some smaller nations punch well above their weight in tennis, while some large countries have surprisingly few players. This map shows us which nations have truly embraced tennis culture.</p>
-      
-      <p><strong>The Grand Slam Connection:</strong> The four tournament locations tell another story - tennis's global reach. From the <span class="highlight">Australian Open</span> in Melbourne to <span class="highlight">Wimbledon</span> in London, <span class="highlight">Roland Garros</span> in Paris, and the <span class="highlight">US Open</span> in New York, these tournaments span four continents. This isn't just coincidence - it reflects tennis's journey from a British garden game to a truly global sport.</p>
-      
-      <p><strong>Australia's Tennis Legacy:</strong> Australia stands out on this map, not just as a host nation, but as a country that has produced some of tennis's greatest champions. From Rod Laver to Margaret Court, Australia has been a tennis superpower, and the <span class="highlight">Australian Open</span> continues this legacy every January.</p>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The Global Tennis Story:</strong> This map tells the story of tennis around the world. Some countries are tennis powerhouses, producing hundreds of professional players, while others have barely any. The darker areas show where tennis has taken root and flourished - these are the nations that dominate the sport.</p>
+        
+        <p><strong>Surprising Discoveries:</strong> You might expect tennis to be most popular in wealthy countries, but the data reveals some surprises. Some smaller nations punch well above their weight in tennis, while some large countries have surprisingly few players. This map shows us which nations have truly embraced tennis culture.</p>
+        
+        <p><strong>The Grand Slam Connection:</strong> The four tournament locations tell another story - tennis's global reach. From the <span class="highlight">Australian Open</span> in Melbourne to <span class="highlight">Wimbledon</span> in London, <span class="highlight">Roland Garros</span> in Paris, and the <span class="highlight">US Open</span> in New York, these tournaments span four continents. This isn't just coincidence - it reflects tennis's journey from a British garden game to a truly global sport.</p>
+        
+        <p><strong>Australia's Tennis Legacy:</strong> Australia stands out on this map, not just as a host nation, but as a country that has produced some of tennis's greatest champions. From Rod Laver to Margaret Court, Australia has been a tennis superpower, and the <span class="highlight">Australian Open</span> continues this legacy every January.</p>
+      </div>
+      <div class="chart-wrapper">
+        <div id="vis"></div>
+      </div>
     </div>
-    <div id="vis"></div>
   </div>
 
   <div class="container">
     <h2>📈 Tennis Player Birth Years: Evolution of Tennis Popularity</h2>
-    <div class="description">
-      <p><strong>The Tennis Revolution:</strong> This chart reveals one of sport's greatest success stories. In the 1800s, tennis was a niche pastime for the wealthy. By the 2000s, it had become a global phenomenon with thousands of new players every year. The dramatic growth tells the story of how tennis transformed from a garden party game to a professional sport watched by millions.</p>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The Tennis Revolution:</strong> This chart reveals one of sport's greatest success stories. In the 1800s, tennis was a niche pastime for the wealthy. By the 2000s, it had become a global phenomenon with thousands of new players every year. The dramatic growth tells the story of how tennis transformed from a garden party game to a professional sport watched by millions.</p>
+        
+        <p><strong>Three Defining Periods:</strong> The data reveals three distinct chapters in tennis history. The <span class="highlight">Classic Era</span> shows tennis in its infancy - a handful of players in the 1800s. The <span class="highlight">Transition Era</span> captures tennis's gradual spread as courts appeared in more places. The <span class="highlight">Modern Era</span> shows the explosion - when tennis became a mass participation sport with professional opportunities for thousands.</p>
+        
+        <p><strong>The 1968 Revolution:</strong> The orange line marks the most important moment in tennis history - the <span class="highlight">Open Era</span>. Before 1968, tennis was split between amateurs and professionals who couldn't compete together. This artificial barrier kept the sport small and limited. When it was removed, tennis exploded. The bars after 1968 tell the story of a sport finally free to reach its potential.</p>
+        
+        <p><strong>What the Numbers Reveal:</strong> The most striking finding is the scale of growth. In the 1800s, you could count tennis players on your fingers. By the 1990s, thousands of players were being born each year. This isn't just about more people - it's about tennis becoming accessible, professional, and truly global. Use the slider to explore this incredible transformation year by year.</p>
+      </div>
       
-      <p><strong>Three Defining Periods:</strong> The data reveals three distinct chapters in tennis history. The <span class="highlight">Classic Era</span> shows tennis in its infancy - a handful of players in the 1800s. The <span class="highlight">Transition Era</span> captures tennis's gradual spread as courts appeared in more places. The <span class="highlight">Modern Era</span> shows the explosion - when tennis became a mass participation sport with professional opportunities for thousands.</p>
-      
-      <p><strong>The 1968 Revolution:</strong> The orange line marks the most important moment in tennis history - the <span class="highlight">Open Era</span>. Before 1968, tennis was split between amateurs and professionals who couldn't compete together. This artificial barrier kept the sport small and limited. When it was removed, tennis exploded. The bars after 1968 tell the story of a sport finally free to reach its potential.</p>
-      
-      <p><strong>What the Numbers Reveal:</strong> The most striking finding is the scale of growth. In the 1800s, you could count tennis players on your fingers. By the 1990s, thousands of players were being born each year. This isn't just about more people - it's about tennis becoming accessible, professional, and truly global. Use the slider to explore this incredible transformation year by year.</p>
-    </div>
-    
-    <div class="slider-container">
-      <label for="vegaYearSlider">Birth Year Range: <span id="vegaYearRange">1834 - 2005</span></label>
-      <input type="range" id="vegaYearSlider" class="slider" min="1834" max="2005" value="2005" step="1">
-      <div class="slider-labels">
-        <span>1834</span>
-        <span>2005</span>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat-item">
-        <div class="stat-number">88,748</div>
-        <div class="stat-label">Total Players</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" id="vegaFilteredPlayers">88,748</div>
-        <div class="stat-label">Filtered Players</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">1994</div>
-        <div class="stat-label">Peak Year</div>
-      </div>
-    </div>
-
-    <div class="chart-container">
-      <div id="vegaChart"></div>
-    </div>
-    
-    <div class="custom-legend">
-      <h4 style="text-align: center; color: #9ACD32; margin-bottom: 10px;">Tennis Era</h4>
-      <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-        <div style="display: flex; align-items: center; gap: 5px;">
-          <div style="width: 12px; height: 12px; background-color: #9ACD32; border-radius: 50%;"></div>
-          <span style="font-size: 12px;">Classic Era</span>
+      <div class="chart-wrapper">
+        <div class="slider-container">
+          <label for="vegaYearSlider">Birth Year Range: <span id="vegaYearRange">1834 - 2005</span></label>
+          <input type="range" id="vegaYearSlider" class="slider" min="1834" max="2005" value="2005" step="1">
+          <div class="slider-labels">
+            <span>1834</span>
+            <span>2005</span>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 5px;">
-          <div style="width: 12px; height: 12px; background-color: #32CD32; border-radius: 50%;"></div>
-          <span style="font-size: 12px;">Transition Era</span>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">88,748</div>
+            <div class="stat-label">Total Players</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="vegaFilteredPlayers">88,748</div>
+            <div class="stat-label">Filtered Players</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1994</div>
+            <div class="stat-label">Peak Year</div>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 5px;">
-          <div style="width: 12px; height: 12px; background-color: #FF8C00; border-radius: 50%;"></div>
-          <span style="font-size: 12px;">Modern Era</span>
+
+        <div class="chart-container">
+          <div id="vegaChart"></div>
+        </div>
+        
+        <div class="custom-legend">
+          <h4 style="text-align: center; color: #9ACD32; margin-bottom: 10px;">Tennis Era</h4>
+          <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background-color: #9ACD32; border-radius: 50%;"></div>
+              <span style="font-size: 12px;">Classic Era</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background-color: #32CD32; border-radius: 50%;"></div>
+              <span style="font-size: 12px;">Transition Era</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <div style="width: 12px; height: 12px; background-color: #FF8C00; border-radius: 50%;"></div>
+              <span style="font-size: 12px;">Modern Era</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -241,18 +262,109 @@
 
   <div class="container">
     <h2>🌡️ Grand Slam Tournament Temperatures: The Climate Challenge (2016-2024)</h2>
-    <div class="description">
-      <p><strong>The Four Climate Stories:</strong> This chart reveals the dramatically different weather conditions during each Grand Slam tournament period. From Melbourne's scorching heat during the Australian Open to London's unpredictable weather during Wimbledon, each tournament presents unique climate challenges that test players in completely different ways.</p>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The Four Climate Stories:</strong> This chart reveals the dramatically different weather conditions during each Grand Slam tournament period. From Melbourne's scorching heat during the Australian Open to London's unpredictable weather during Wimbledon, each tournament presents unique climate challenges that test players in completely different ways.</p>
+        
+        <p><strong>Temperature Extremes:</strong> The data shows the Australian Open (red line) consistently experiences the hottest conditions during its tournament period, often exceeding 25°C. Wimbledon (purple) tends to be the coolest during its tournament period, while the French Open (blue) and US Open (orange) fall somewhere in between. This temperature variation explains why some players excel at certain tournaments while struggling at others.</p>
+        
+        <p><strong>The Heat Threshold:</strong> The orange dashed line marks 25°C - the point where conditions become extremely challenging for players. Notice how the Australian Open frequently crosses this threshold during its tournament period, while Wimbledon rarely does. This explains why heat tolerance and conditioning are crucial for Australian Open success.</p>
+        
+        <p><strong>Year-to-Year Variations:</strong> Each tournament shows significant temperature fluctuations from year to year during their respective tournament periods. A cool year at the Australian Open might be easier than a hot year at the US Open. This unpredictability adds another layer of strategy - players must adapt their preparation and tactics based on the specific weather conditions they'll face during each Grand Slam.</p>
+      </div>
       
-      <p><strong>Temperature Extremes:</strong> The data shows the Australian Open (red line) consistently experiences the hottest conditions during its tournament period, often exceeding 25°C. Wimbledon (purple) tends to be the coolest during its tournament period, while the French Open (blue) and US Open (orange) fall somewhere in between. This temperature variation explains why some players excel at certain tournaments while struggling at others.</p>
-      
-      <p><strong>The Heat Threshold:</strong> The orange dashed line marks 25°C - the point where conditions become extremely challenging for players. Notice how the Australian Open frequently crosses this threshold during its tournament period, while Wimbledon rarely does. This explains why heat tolerance and conditioning are crucial for Australian Open success.</p>
-      
-      <p><strong>Year-to-Year Variations:</strong> Each tournament shows significant temperature fluctuations from year to year during their respective tournament periods. A cool year at the Australian Open might be easier than a hot year at the US Open. This unpredictability adds another layer of strategy - players must adapt their preparation and tactics based on the specific weather conditions they'll face during each Grand Slam.</p>
+      <div class="chart-wrapper">
+        <div class="chart-container-temp">
+          <div id="temperatureChart"></div>
+        </div>
+      </div>
     </div>
-    
-    <div class="chart-container-temp">
-      <div id="temperatureChart"></div>
+  </div>
+
+  <div class="container">
+    <h2>🎾 Left-Handed vs Right-Handed Players: The Lefty Advantage?</h2>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The Lefty Phenomenon:</strong> In the general population, only about 10% of people are left-handed. In professional tennis, left-handed players make up 8.4% of all players with recorded handedness. But here's the stunning revelation: <span class="highlight">Rafael Nadal alone won 26.5% of all Grand Slam titles from 2005-2025</span> - that's 22 out of 83 titles! This means one left-handed player won more than a quarter of all major championships in the modern era.</p>
+        
+        <p><strong>Why Lefties Have an Edge:</strong> Left-handed players enjoy a strategic advantage in tennis. Most players train predominantly against right-handers, making them less familiar with the spin, angles, and serve patterns that lefties produce. The ball spins differently, bounces at unexpected angles, and forces opponents to adjust their positioning. This unfamiliarity can be decisive at the highest levels - and the championship data proves it.</p>
+        
+        <p><strong>The Champions' Evidence:</strong> Among the "Big Three" who dominated tennis (2005-2025), <span class="highlight">Rafael Nadal</span> (left-handed, 22 Grand Slams) sits between <span class="highlight">Novak Djokovic</span> (right-handed, 24 Grand Slams) and <span class="highlight">Roger Federer</span> (right-handed, 16 Grand Slams). That one left-hander competed equally with the two greatest right-handers in history is remarkable. Other legendary lefties include <span class="highlight">Rod Laver</span> (11 Grand Slams - Australia's legend), <span class="highlight">Martina Navratilova</span> (18 Grand Slams), and <span class="highlight">John McEnroe</span> (7 Grand Slams).</p>
+        
+        <p><strong>The Data Story:</strong> This chart shows left and right-handed players across birth decades. While lefties remain a small minority, their impact at the championship level is disproportionately large. The growth in both groups reflects tennis's overall expansion, but the lefty advantage - proven by championship data - has been a constant feature throughout tennis history.</p>
+      </div>
+      
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <div id="handednessChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>⚖️ Gender Distribution in Professional Tennis: The Rise of Women's Tennis</h2>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The Gender Gap Story:</strong> Professional tennis has historically been male-dominated, with men making up 62% of all professional players in our dataset. However, this simple statistic hides a remarkable transformation story. When we look at the data decade by decade, we see women's tennis has grown dramatically, especially in recent years.</p>
+        
+        <p><strong>The Turning Point:</strong> The most striking finding is in the 2000s decade - for the first time in tennis history, <span class="highlight">more female players were born than male players</span> (2,122 females vs 1,345 males). This represents a historic shift, showing that women's tennis has not only caught up but is now leading in terms of new player participation. This is a testament to decades of advocacy for gender equity in sports.</p>
+        
+        <p><strong>Australian Women's Tennis Legacy:</strong> Australia has been at the forefront of women's tennis. Legends like <span class="highlight">Margaret Court</span> (24 Grand Slams - the most in history), <span class="highlight">Evonne Goolagong Cawley</span> (7 Grand Slams), and <span class="highlight">Ashleigh Barty</span> (3 Grand Slams, retired 2022) have inspired generations. The Australian Open's equal prize money since 2001 has been a powerful statement for gender equality.</p>
+        
+        <p><strong>The Broader Context:</strong> This growth reflects broader social changes: Title IX in the US (1972), the WTA's founding (1973), equal Grand Slam prize money, and increased media coverage of women's sports. The data shows these efforts are working - women's tennis is thriving and growing faster than men's tennis in the 21st century.</p>
+      </div>
+      
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <div id="genderChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>🏆 Grand Slam Dominance: The Big Three Era (2005-2025)</h2>
+    <div style="background: linear-gradient(135deg, #fff8f0 0%, #f0fff0 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #FF8C00;">
+      <p style="margin: 0; font-size: 14px; color: #2c3e50;"><strong>💡 Interactive Feature:</strong> Click on any tournament name in the legend (Australian Open, French Open, Wimbledon, US Open) to filter both charts below. Click the same tournament again to reset. This lets you explore which players dominated specific tournaments!</p>
+    </div>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>Unprecedented Dominance:</strong> From 2005 to 2025, three players - <span class="highlight">Roger Federer</span>, <span class="highlight">Rafael Nadal</span>, and <span class="highlight">Novak Djokovic</span> - won an astonishing 62 out of 83 Grand Slam titles (74.7%). This heatmap reveals their stranglehold on tennis's biggest tournaments across two decades. No other era in tennis history has seen such concentrated dominance by so few players.</p>
+        
+        <p><strong>The Pattern of Power:</strong> Each color block represents a Grand Slam victory. Notice how the Big Three's colors (blue, red, green) dominate almost every row and column. From 2005-2022, they won at least one Grand Slam every single year. The recent emergence of new champions like <span class="highlight">Carlos Alcaraz</span> (orange) and <span class="highlight">Jannik Sinner</span> (teal) in 2022-2025 signals a potential changing of the guard.</p>
+        
+        <p><strong>Australian Connection:</strong> While no Australian won a Grand Slam in this period, Australia's tennis legacy lives on through the Australian Open's prestige and the inspiration these champions provide to young Australian players. The tournament has been a stage for some of the greatest matches in tennis history, including epic battles between the Big Three.</p>
+        
+        <p><strong>What This Means:</strong> This visualization shows that we've witnessed one of sport's greatest eras. Future generations will study this period as the golden age of men's tennis. The concentration of talent, the longevity of excellence, and the rivalry between these three champions created an unprecedented spectacle that may never be repeated.</p>
+      </div>
+      
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <div id="dominanceChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>🎯 Tournament Specialization: Masters of Their Domain</h2>
+    <div class="chart-layout">
+      <div class="description">
+        <p><strong>The King of Clay:</strong> <span class="highlight">Rafael Nadal's 14 French Open titles</span> represent the most dominant performance at a single tournament in tennis history. He won 14 out of 21 French Opens (66.7%) from 2005-2025. On clay courts in Paris, Nadal is virtually unbeatable - his game, physicality, and mental strength combine perfectly with the slow surface. This is specialization taken to an extreme rarely seen in any sport.</p>
+        
+        <p><strong>Djokovic's Melbourne Fortress:</strong> <span class="highlight">Novak Djokovic's 10 Australian Open titles</span> show his mastery of hard courts and hot conditions. Melbourne's fast courts and summer heat suit his defensive style and incredible fitness. His dominance down under has made the Australian Open his signature tournament, much like Nadal owns the French Open.</p>
+        
+        <p><strong>Federer's Grass Court Elegance:</strong> <span class="highlight">Roger Federer's 6 Wimbledon titles</span> (in this period) showcase his graceful, attacking style perfectly suited to grass. His serve-and-volley game and elegant movement made him nearly unstoppable on Wimbledon's lawns. The All England Club became his second home.</p>
+        
+        <p><strong>Surface Matters:</strong> This chart reveals a fundamental truth about tennis - surface specialization is real and significant. While the Big Three could win on any surface, each had their fortress. For aspiring players, this shows the importance of developing a game style that matches your strengths and finding surfaces where you excel. The data proves that specialization, combined with all-around excellence, is the path to greatness.</p>
+      </div>
+      
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <div id="specializationChart"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -309,6 +421,46 @@
     }).then(function(result) {
       console.log('Grand Slam temperatures chart loaded successfully');
     }).catch(console.error);
+    
+    // Load the handedness analysis chart
+    vegaEmbed('#handednessChart', 'handedness-analysis.json?v=' + Date.now(), {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Handedness analysis chart loaded successfully');
+    }).catch(function(error) {
+      console.error('Error loading handedness chart:', error);
+    });
+    
+    // Load the gender distribution chart
+    vegaEmbed('#genderChart', 'gender-distribution.json?v=' + Date.now(), {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Gender distribution chart loaded successfully');
+    }).catch(function(error) {
+      console.error('Error loading gender chart:', error);
+    });
+    
+    // Load the Grand Slam dominance heatmap
+    vegaEmbed('#dominanceChart', 'grand-slam-dominance.json?v=' + Date.now(), {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Grand Slam dominance chart loaded successfully');
+    }).catch(function(error) {
+      console.error('Error loading dominance chart:', error);
+    });
+    
+    // Load the tournament specialization chart
+    vegaEmbed('#specializationChart', 'tournament-specialization.json?v=' + Date.now(), {
+      actions: false,
+      renderer: 'svg'
+    }).then(function(result) {
+      console.log('Tournament specialization chart loaded successfully');
+    }).catch(function(error) {
+      console.error('Error loading specialization chart:', error);
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Left-Handed vs Right-Handed Tennis Players: The Lefty Advantage?",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Analysis of handedness distribution among professional tennis players by birth decade, revealing the over-representation of left-handed players.",
+  "data": {
+    "url": "handedness_by_decade.csv"
+  },
+  "width": 800,
+  "height": 400,
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "decade",
+      "type": "ordinal",
+      "title": "Birth Decade",
+      "axis": {
+        "titleFontWeight": "bold",
+        "titleColor": "#9ACD32",
+        "labelAngle": 0,
+        "titleFontSize": 16,
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of Players",
+      "axis": {
+        "titleFontWeight": "bold",
+        "titleColor": "#9ACD32",
+        "titleFontSize": 16,
+        "labelFontSize": 13
+      }
+    },
+    "color": {
+      "field": "hand",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Left-handed", "Right-handed"],
+        "range": ["#FF8C00", "#9ACD32"]
+      },
+      "legend": {
+        "title": "Playing Hand",
+        "orient": "bottom",
+        "titleFontSize": 14,
+        "titleColor": "#9ACD32",
+        "labelFontSize": 12,
+        "direction": "horizontal"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "decade",
+        "type": "ordinal",
+        "title": "Birth Decade"
+      },
+      {
+        "field": "hand",
+        "type": "nominal",
+        "title": "Handedness"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of Players",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": true,
+      "gridColor": "#f0f0f0",
+      "gridOpacity": 0.5,
+      "domain": true,
+      "ticks": true
+    }
+  }
+}
+

@@ -74,9 +74,12 @@
           },
           "legend": {
             "title": "Players per Million",
-            "orient": "right",
+            "orient": "bottom",
             "titleFontSize": 14,
-            "labelFontSize": 12
+            "titleColor": "#9ACD32",
+            "labelFontSize": 12,
+            "direction": "horizontal",
+            "offset": 20
           }
         },
         "stroke": {
@@ -165,11 +168,14 @@
           },
           "legend": {
             "title": "Grand Slam Tournaments",
-            "orient": "right",
+            "orient": "bottom",
             "titleFontSize": 14,
+            "titleColor": "#9ACD32",
             "labelFontSize": 12,
             "symbolType": "circle",
-            "symbolSize": 100
+            "symbolSize": 100,
+            "direction": "horizontal",
+            "offset": -20
           }
         },
         "tooltip": [
