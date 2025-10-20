@@ -56,17 +56,10 @@
       "field": "champion",
       "type": "nominal",
       "scale": {
-        "domain": ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Andy Murray", "Stan Wawrinka", "Carlos Alcaraz", "Jannik Sinner"],
-        "range": ["#3498db", "#e74c3c", "#9ACD32", "#f39c12", "#8e44ad", "#FF8C00", "#16a085"]
+        "domain": ["Novak Djokovic", "Rafael Nadal", "Roger Federer", "Carlos Alcaraz", "Jannik Sinner", "Andy Murray", "Stan Wawrinka", "Marin Čilić", "Dominic Thiem", "Daniil Medvedev", "Juan Martín del Potro", "Marat Safin"],
+        "range": ["#3498db", "#e67e22", "#8e44ad", "#e91e63", "#27ae60", "#95a5a6", "#e74c3c", "#2c3e50", "#1abc9c", "#c0392b", "#f4d03f", "#34495e"]
       },
-      "legend": {
-        "title": "Champion",
-        "orient": "right",
-        "titleFontSize": 14,
-        "titleColor": "#9ACD32",
-        "labelFontSize": 11,
-        "columns": 1
-      }
+      "legend": null
     },
     "opacity": {
       "condition": {

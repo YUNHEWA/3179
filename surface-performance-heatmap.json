@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Court Surface Mastery: Who Dominates Where?",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Heatmap showing Grand Slam titles won by each player on different court surfaces.",
+  "data": {
+    "url": "surface_performance.csv"
+  },
+  "width": 800,
+  "height": 500,
+  "mark": {
+    "type": "rect",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "surface",
+      "type": "nominal",
+      "axis": {
+        "title": "Court Surface",
+        "labelFontSize": 13,
+        "titleFontSize": 16,
+        "titleColor": "#9ACD32",
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "player",
+      "type": "nominal",
+      "sort": {
+        "op": "sum",
+        "field": "titles",
+        "order": "descending"
+      },
+      "axis": {
+        "title": "Player",
+        "labelFontSize": 12,
+        "titleFontSize": 16,
+        "titleColor": "#9ACD32"
+      }
+    },
+    "color": {
+      "field": "titles",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "greens",
+        "domain": [0, 14]
+      },
+      "legend": {
+        "title": "Titles Won",
+        "orient": "right",
+        "titleFontSize": 14,
+        "titleColor": "#9ACD32",
+        "labelFontSize": 12
+      }
+    },
+    "tooltip": [
+      {
+        "field": "player",
+        "type": "nominal",
+        "title": "Player"
+      },
+      {
+        "field": "surface",
+        "type": "nominal",
+        "title": "Surface"
+      },
+      {
+        "field": "titles",
+        "type": "quantitative",
+        "title": "Titles Won"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null,
+      "strokeWidth": 0
+    },
+    "axis": {
+      "grid": false
+    },
+    "rect": {
+      "stroke": "white",
+      "strokeWidth": 2
+    }
+  }
+}
+

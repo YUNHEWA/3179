@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Tournament Specialization: Masters of Their Domain",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Bar chart showing which Grand Slam tournaments each champion dominated.",
+  "data": {
+    "url": "tournament_specialization.csv"
+  },
+  "width": 700,
+  "height": 450,
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "tournament",
+      "type": "nominal",
+      "sort": ["Australian Open", "French Open", "Wimbledon", "US Open"],
+      "axis": {
+        "title": "Grand Slam Tournament",
+        "labelFontSize": 12,
+        "titleFontSize": 16,
+        "titleColor": "#9ACD32",
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "titles",
+      "type": "quantitative",
+      "stack": true,
+      "axis": {
+        "title": "Grand Slam Titles",
+        "labelFontSize": 13,
+        "titleFontSize": 16,
+        "titleColor": "#9ACD32"
+      }
+    },
+    "color": {
+      "field": "player",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Novak Djokovic", "Rafael Nadal", "Roger Federer", "Carlos Alcaraz", "Jannik Sinner", "Andy Murray", "Stan Wawrinka", "Marin Čilić", "Dominic Thiem", "Daniil Medvedev", "Juan Martín del Potro", "Marat Safin"],
+        "range": ["#3498db", "#e67e22", "#8e44ad", "#e91e63", "#27ae60", "#95a5a6", "#e74c3c", "#2c3e50", "#1abc9c", "#c0392b", "#f4d03f", "#34495e"]
+      },
+      "legend": null
+    },
+    "order": {
+      "field": "titles",
+      "type": "quantitative",
+      "sort": "descending"
+    },
+    "tooltip": [
+      {
+        "field": "player",
+        "type": "nominal",
+        "title": "Player"
+      },
+      {
+        "field": "tournament",
+        "type": "nominal",
+        "title": "Tournament"
+      },
+      {
+        "field": "titles",
+        "type": "quantitative",
+        "title": "Titles Won"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    }
+  }
+}
+

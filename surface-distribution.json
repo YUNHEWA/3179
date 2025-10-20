@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Grand Slam Titles by Court Surface (2005-2025)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#9ACD32"
+  },
+  "description": "Donut chart showing the distribution of Grand Slam titles across different court surfaces.",
+  "data": {
+    "url": "surface_statistics.csv"
+  },
+  "width": 400,
+  "height": 400,
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 80,
+        "outerRadius": 150,
+        "stroke": "white",
+        "strokeWidth": 3,
+        "tooltip": true
+      },
+      "encoding": {
+        "theta": {
+          "field": "total_titles",
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "surface",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Hard", "Clay", "Grass"],
+            "range": ["#3498db", "#e67e22", "#27ae60"]
+          },
+          "legend": {
+            "title": "Court Surface",
+            "orient": "bottom",
+            "titleFontSize": 14,
+            "titleColor": "#9ACD32",
+            "labelFontSize": 12,
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "surface",
+            "type": "nominal",
+            "title": "Surface"
+          },
+          {
+            "field": "total_titles",
+            "type": "quantitative",
+            "title": "Total Titles"
+          },
+          {
+            "field": "unique_champions",
+            "type": "quantitative",
+            "title": "Unique Champions"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radiusOffset": 30,
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "text": {
+          "field": "total_titles",
+          "type": "quantitative"
+        },
+        "theta": {
+          "field": "total_titles",
+          "type": "quantitative",
+          "stack": true
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "83 Total",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "color": "#2c3e50",
+        "dy": -10
+      },
+      "encoding": {
+        "x": {"value": 200},
+        "y": {"value": 200}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "Grand Slams",
+        "fontSize": 14,
+        "color": "#7f8c8d",
+        "dy": 10
+      },
+      "encoding": {
+        "x": {"value": 200},
+        "y": {"value": 200}
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
+

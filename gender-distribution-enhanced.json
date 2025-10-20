@@ -34,6 +34,10 @@
     {
       "calculate": "datum.gender === 'Male' ? -datum.percentage : datum.percentage",
       "as": "signed_percentage"
+    },
+    {
+      "calculate": "format(datum.percentage, '.0f') + '%'",
+      "as": "percentage_label"
     }
   ],
   "layer": [
@@ -151,9 +155,8 @@
           "datum": 0
         },
         "text": {
-          "field": "percentage",
-          "type": "quantitative",
-          "format": ".0f"
+          "field": "percentage_label",
+          "type": "nominal"
         }
       }
     },
@@ -179,9 +182,8 @@
           "datum": 0
         },
         "text": {
-          "field": "percentage",
-          "type": "quantitative",
-          "format": ".0f"
+          "field": "percentage_label",
+          "type": "nominal"
         }
       }
     },
@@ -243,20 +245,6 @@
       "encoding": {
         "x": {"datum": 0},
         "y": {"datum": "2000"}
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "strokeWidth": 3,
-        "color": "#9ACD32",
-        "opacity": 0.8,
-        "dy": -20
-      },
-      "encoding": {
-        "x": {"datum": 0},
-        "y": {"datum": "2000"},
-        "x2": {"datum": 2200}
       }
     },
     {
