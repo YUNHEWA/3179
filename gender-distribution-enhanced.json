@@ -10,8 +10,9 @@
   "data": {
     "url": "gender_by_decade.csv"
   },
-  "width": 1000,
+  "width": 900,
   "height": 400,
+  "padding": {"top": 0, "bottom": 80,  "left": 5,"right": 5},
   "transform": [
     {
       "calculate": "datum.gender === 'Male' ? -datum.count : datum.count",
@@ -91,7 +92,7 @@
           },
           "legend": {
             "title": "Gender",
-            "orient": "bottom",
+            "orient": "top",
             "titleFontSize": 14,
             "titleColor": "#9ACD32",
             "labelFontSize": 12,
