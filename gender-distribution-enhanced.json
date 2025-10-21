@@ -11,7 +11,7 @@
     "url": "gender_by_decade.csv"
   },
   "width": 1000,
-  "height": 500,
+  "height": 400,
   "transform": [
     {
       "calculate": "datum.gender === 'Male' ? -datum.count : datum.count",
